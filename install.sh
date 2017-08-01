@@ -356,9 +356,9 @@ function setupHomestead {
 	# fi
 
 	echo -e "${BGreen}${PRE}Updating composer.${Color_Off}"
-	composer selfupdate
+	sudo composer selfupdate
 	echo -e "${BGreen}${PRE}Installing composer files.${Color_Off}"
-	composer install
+	sudo composer install
 	echo -e "${BGreen}${PRE}Installing homestead files.${Color_Off}"
 	composer require laravel/homestead --dev
 
