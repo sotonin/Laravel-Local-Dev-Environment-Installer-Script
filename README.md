@@ -6,5 +6,9 @@ Edit both .env.install.example and .env.conf.example and rename to .env.install 
 # Execute it
 bash install.sh
 
-# Special Note
+# Special Notes
 You will be prompted for your stack password (specified in .env.conf) and for the sudo password a few times
+
+-To delete an old or bad virtualbox
+vboxmanage list vms (copy the part between {} the hash)
+vboxmanage unregistervm hash --delete
