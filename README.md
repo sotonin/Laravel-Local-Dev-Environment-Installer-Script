@@ -10,5 +10,7 @@ bash install.sh
 You will be prompted for your stack password (specified in .env.conf) and for the sudo password a few times
 
 -To delete an old or bad virtualbox
+
 vboxmanage list vms (copy the part between {} the hash)
+
 vboxmanage unregistervm hash --delete
