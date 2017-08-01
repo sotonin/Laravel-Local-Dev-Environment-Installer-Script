@@ -312,29 +312,6 @@ function cloneRepository {
 	fi
 }
 
-function setupScotchIO {
-	getDevRepo "Custom Repository? (default uses scotchbox.io's standard repo)" "https://github.com/scotch-io/scotch-box.git"
-	cloneRepository $REPO $BRANCH
-	enterStack
-	
-	if [ -f "Vagrantfile" ]; then
-		getDevDomain
-		getDevIP "192.168.33.10"
-
-		echo -e "${BGreen}${PRE}Modifying hostname in Vagrantfile${Color_Off}"
-		cat ./Vagrantfile | sed "s/config.vm.hostname = \"scotchbox\"/config.vm.hostname = \"${DOMAIN}\"/" > ./Vagrantfile.temp && mv ./Vagrantfile.temp ./Vagrantfile
-
-		if [[ ! -z "${DEVIP}" ]]; then
-			echo -e "${BGreen}${PRE}Modifying ip in VagrantFile${Color_Off}"
-			cat ./Vagrantfile | sed "s/ip: \"192.168.33.10\"/ip: \"${DEVIP}\"/" > ./Vagrantfile.temp && mv ./Vagrantfile.temp ./Vagrantfile
-		fi
-
-		updateHostsFile
-	fi
-
-	vagrant up
-}
-
 function setupHomestead {
 	getDevRepo "Code repository path? (ex. https://someuser@bitbucket.org/someteam/somerepo.git)"
 	cloneRepository $REPO $BRANCH
