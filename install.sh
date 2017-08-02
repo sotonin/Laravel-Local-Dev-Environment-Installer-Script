@@ -355,10 +355,12 @@ function setupHomestead {
 	# 	fi
 	# fi
 
+	chmod -R 777 vendor storage
+
 	echo -e "${BGreen}${PRE}Updating composer.${Color_Off}"
 	sudo composer selfupdate
 	echo -e "${BGreen}${PRE}Installing composer files.${Color_Off}"
-	sudo composer install
+	composer install
 	echo -e "${BGreen}${PRE}Installing homestead files.${Color_Off}"
 	composer require laravel/homestead --dev
 
@@ -366,6 +368,8 @@ function setupHomestead {
 		echo "${BRed}Error: Homestead could not be installed, terminating script.${Color_Off}"
 		exit 1
 	fi
+
+	chmod -R 777 bootstrap/cache
 
 	getDevDomain
 
